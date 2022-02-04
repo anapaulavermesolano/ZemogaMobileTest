@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ZemogaMobileTest</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="post_fragment_label">Post Fragment</string>
+    <string name="detail_fragment_label">Detail Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="action_refresh">refresh</string>
+    <string name="description">Description</string>
+    <string name="user">User</string>
+    <string name="comments">COMMENTS</string>
+    <string name="action_favorite">favorite</string>
+</resources>
