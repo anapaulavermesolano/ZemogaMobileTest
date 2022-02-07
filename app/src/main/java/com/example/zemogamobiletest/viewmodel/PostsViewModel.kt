@@ -24,7 +24,7 @@ class PostsViewModel(private val repository: PostsRepository) : ViewModel() {
             override fun onSuccess(data: List<Post>?) {
                 _viewState.value = PostViewState.Loading(false)
                 if (data.isNullOrEmpty()) {
-                    _viewState.value = PostViewState.Error("Lista vacia")
+                    _viewState.value = PostViewState.EmptyPosts("No existen Posts")
                 } else {
                     _viewState.value = PostViewState.AllPost(data)
                 }

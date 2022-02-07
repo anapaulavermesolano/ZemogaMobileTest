@@ -25,4 +25,13 @@
         android:id="@+id/contentDetail"
         layout="@layout/content_detail" />
 
+    <include layout="@layout/layout_progress_bar"
+        android:id="@+id/layoutLoading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

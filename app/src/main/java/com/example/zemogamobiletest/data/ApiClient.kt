@@ -1,5 +1,7 @@
 package com.example.zemogamobiletest.data
 
+import com.example.zemogamobiletest.model.Comments
+import com.example.zemogamobiletest.model.Post
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -35,7 +37,10 @@ object ApiClient {
     }
 
     interface ServicesApiInterface {
-        @GET("db")
-        fun posts(): Call<PostsResponse>
+        @GET("posts")
+        fun posts(): Call<List<Post>>
+
+        @GET("comments")
+        fun comments(): Call<List<Comments>>
     }
 }

@@ -1,26 +1,26 @@
 package com.example.zemogamobiletest.data
 
-import com.example.zemogamobiletest.model.Post
-import com.example.zemogamobiletest.model.PostsDataSource
+import com.example.zemogamobiletest.model.Comments
+import com.example.zemogamobiletest.model.CommentsDataSource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostsRemoteDataSource(apiClient: ApiClient): PostsDataSource {
+class CommentsRemoteDataSource(apiClient: ApiClient): CommentsDataSource {
 
-    private var call: Call<List<Post>>? = null
+    private var call: Call<List<Comments>>? = null
     private val service = apiClient.build()
 
-    override fun getPosts(callback: OperationCallback<Post>) {
-        call = service?.posts()
+    override fun getComments(callback: OperationCallback<Comments>) {
+        call = service?.comments()
 
-        call?.enqueue(object : Callback<List<Post>> {
-            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+        call?.enqueue(object : Callback<List<Comments>> {
+            override fun onFailure(call: Call<List<Comments>>, t: Throwable) {
                 callback.onError(t.message)
             }
             override fun onResponse(
-                call: Call<List<Post>>,
-                response: Response<List<Post>>
+                call: Call<List<Comments>>,
+                response: Response<List<Comments>>
             ) {
                 response.body()?.let {
                     if (response.isSuccessful) {

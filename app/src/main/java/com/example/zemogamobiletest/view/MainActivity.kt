@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             is PostViewState.Loading -> showLoading(viewState.isViewLoading)
             is PostViewState.Error -> showError(viewState.onMessageError)
             is PostViewState.AllPost -> loadingPosts(viewState.post.orEmpty())
+            is PostViewState.EmptyPosts -> emptyPosts(viewState.message)
         }
     }
 
@@ -93,15 +94,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean){
-        binding.apply {
-            contentMain.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.contentMain.layoutLoading.root.apply {
+            visibility = if (isLoading) View.VISIBLE else View.GONE
         }
     }
 
     private fun showError(onMessageError: String){
-        binding.apply {
-            contentMain.layoutError.root.visibility = View.VISIBLE
-            contentMain.layoutError.textViewEmptyList.text = onMessageError
+        binding.contentMain.layoutError.apply {
+            root.visibility = View.VISIBLE
+            textViewEmptyList.text = onMessageError
+        }
+    }
+
+    private fun emptyPosts(message: String){
+        binding.contentMain.layoutError.apply {
+            root.visibility = View.VISIBLE
+            textViewEmptyList.text = message
         }
     }
 
