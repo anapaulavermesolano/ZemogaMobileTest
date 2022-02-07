@@ -20,9 +20,9 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/fab_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rightImageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -30,8 +30,8 @@
         tools:text="@tools:sample/lorem" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/height_navigate"
+        android:layout_height="@dimen/height_navigate"
         android:id="@+id/rightImageView"
         app:srcCompat="@drawable/ic_baseline_navigate_next_24"
         android:tint="@color/black"

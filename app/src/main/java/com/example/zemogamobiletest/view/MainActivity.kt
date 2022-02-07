@@ -43,7 +43,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             fab.setOnClickListener { view ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //Falta mapear con la BD
+                viewModel.deleteAll()
+                Snackbar.make(view, getString(R.string.message_empty_posts), Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             }
         }
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             is PostViewState.Loading -> showLoading(viewState.isViewLoading)
             is PostViewState.Error -> showError(viewState.onMessageError)
             is PostViewState.AllPost -> loadingPosts(viewState.post.orEmpty())
-            is PostViewState.EmptyPosts -> emptyPosts(viewState.message)
+            is PostViewState.EmptyPosts -> emptyPosts(viewState.isEmpty)
         }
     }
 
@@ -75,11 +77,11 @@ class MainActivity : AppCompatActivity() {
             TabLayoutMediator(contentMain.tabLayout, contentMain.viewPager) { tab, position ->
                 when (position) {
                     0 -> {
-                        tab.text = "ALL"
+                        tab.text = TAB_ALL
                         tab.setIcon(R.drawable.ic_baseline_notifications_24)
                     }
                     1 -> {
-                        tab.text = "FAVORITES"
+                        tab.text = TAB_FAVORITES
                         tab.setIcon(R.drawable.ic_baseline_star_24)
                     }
                 }
@@ -106,10 +108,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun emptyPosts(message: String){
+    private fun emptyPosts(isEmpty: Boolean){
         binding.contentMain.layoutError.apply {
-            root.visibility = View.VISIBLE
-            textViewEmptyList.text = message
+            if (isEmpty) {
+                root.visibility = View.VISIBLE
+                textViewEmptyList.text = getString(R.string.empty_posts)
+            } else {
+                root.visibility = View.GONE
+            }
+
         }
     }
 
@@ -130,5 +137,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val NUMBER_OF_TABS = 2
+        const val TAB_ALL = "ALL"
+        const val TAB_FAVORITES = "FAVORITES"
+        const val TABS_KEY = "TABS KEY"
     }
 }

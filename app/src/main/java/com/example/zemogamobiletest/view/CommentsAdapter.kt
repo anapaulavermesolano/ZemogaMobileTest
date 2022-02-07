@@ -10,8 +10,6 @@ import com.example.zemogamobiletest.model.Comments
 
 class CommentsAdapter: ListAdapter<Comments, CommentViewHolder>(CommentsDiffCallback()) {
 
-    private var comments: List<Comments> = emptyList()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemCommentsBinding.inflate(layoutInflater, parent, false)

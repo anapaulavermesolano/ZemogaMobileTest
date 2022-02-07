@@ -30,8 +30,8 @@ class PostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragmentName = arguments?.getString("fragmentName").orEmpty()
-        if (fragmentName == "All") setRecyclerPosts()
+        fragmentName = arguments?.getString(MainActivity.TABS_KEY).orEmpty()
+        if (fragmentName == MainActivity.TAB_ALL) setRecyclerPosts()
         else setRecyclerFavorites()
     }
     private fun setRecyclerPosts() {
@@ -51,7 +51,7 @@ class PostFragment : Fragment() {
     }
     private fun onClickPost(post: Post) {
         val i = Intent(requireActivity(), DetailActivity::class.java)
-        i.putExtra("POST", post)
+        i.putExtra(DetailActivity.SERIALIZABLE_EXTRA, post)
         startActivity(i)
     }
 
@@ -59,4 +59,5 @@ class PostFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

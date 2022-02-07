@@ -12,17 +12,17 @@ class TabsPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle, private var nu
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> {
-                // # Music Fragment
+                // # ALL Fragment
                 val bundle = Bundle()
-                bundle.putString("fragmentName", "All")
+                bundle.putString(MainActivity.TABS_KEY, MainActivity.TAB_ALL)
                 val postFragment = PostFragment()
                 postFragment.arguments = bundle
                 return postFragment
             }
             else -> {
-                // # Movies Fragment
+                // # FAVORITES Fragment
                 val bundle = Bundle()
-                bundle.putString("fragmentName", "Favorites")
+                bundle.putString(MainActivity.TABS_KEY, MainActivity.TAB_FAVORITES)
                 val favoritesFragment = PostFragment()
                 favoritesFragment.arguments = bundle
                 return favoritesFragment

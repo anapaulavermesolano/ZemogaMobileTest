@@ -14,4 +14,6 @@
     <string name="user">User</string>
     <string name="comments">COMMENTS</string>
     <string name="action_favorite">favorite</string>
+    <string name="empty_posts">No existen Posts</string>
+    <string name="message_empty_posts">Se eliminaron todos los Posts</string>
 </resources>
